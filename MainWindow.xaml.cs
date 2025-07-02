@@ -35,4 +35,11 @@ public partial class MainWindow : Window
 
         visitsList.Show();
     }
+
+    private void ShowPassManager_Click(object sender, RoutedEventArgs e)
+    {
+        var passManager = new PassManage();
+
+        passManager.Show();
+    }
 }

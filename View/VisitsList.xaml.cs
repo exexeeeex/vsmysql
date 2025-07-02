@@ -1,5 +1,6 @@
 ﻿using InterfaceDB.Data;
 using InterfaceDB.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace InterfaceDB.View
             this.Loaded += (sender, e) => OnLoad();
         }
 
-        public void OnLoad()
+        public async void OnLoad()
         {
             try
             {
@@ -35,12 +36,12 @@ namespace InterfaceDB.View
                 {
                     if (context.Database.CanConnect())
                     {
-                        var data = context.activation_history.ToList();
+                        var data = await context.activation_history.ToListAsync();
                         var visits = new List<VisitInfo>();
                         foreach (var visit in data)
                         {
-                            var pass = context.pass.FirstOrDefault(p => p.Id == visit.pass_id);
-                            var user = context.user.FirstOrDefault(u => u.Id == pass.user_id);
+                            var pass = await context.pass.FirstOrDefaultAsync(p => p.Id == visit.pass_id);
+                            var user = await context.user.FirstOrDefaultAsync(u => u.Id == pass.user_id);
                             visits.Add(new VisitInfo()
                             {
                                 DateTimeVisit = visit.date_time_activation.ToString("dd.mm.yy hh:mm"),

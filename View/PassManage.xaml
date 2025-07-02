@@ -1,0 +1,23 @@
+﻿<Window x:Class="InterfaceDB.View.PassManage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterfaceDB.View"
+        mc:Ignorable="d"
+        Title="PassManage" ResizeMode="NoResize" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label FontSize="17">Введите номер пропуска</Label>
+            <TextBox x:Name="passNumber" Margin="0 0 0 10" Width="200" Height="40" FontSize="17"></TextBox>
+            <Button Click="DeletePass_Click" Margin="0 0 0 10" FontSize="17">Удалить пропуск</Button>
+            <Button Click="OffPass_Click" FontSize="17">Деактивировать пропуск</Button>
+        </StackPanel>
+    </Grid>
+</Window>

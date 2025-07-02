@@ -1,5 +1,6 @@
 ﻿using InterfaceDB.Data;
 using InterfaceDB.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace InterfaceDB.View
             this.Loaded += (sender, e) => OnLoad();
         }
 
-        public void OnLoad()
+        public async void OnLoad()
         {
             try
             {
@@ -44,7 +45,7 @@ namespace InterfaceDB.View
                         var passes = new List<PassInfo>();
                         foreach (var pass in data)
                         {
-                            var user = context.user.FirstOrDefault(u => u.Id == pass.user_id);
+                            var user = await context.user.FirstOrDefaultAsync(u => u.Id == pass.user_id);
                             passes.Add(new PassInfo()
                             {
                                 Id = pass.Id,
